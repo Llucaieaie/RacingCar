@@ -113,6 +113,7 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
+	
 	turn = acceleration = brake = 0.0f;
 
 	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -159,28 +160,31 @@ update_status ModulePlayer::Update(float dt)
 
 void ModulePlayer::CameraPlayer(float dt) 
 {
-	vec3 myCamera;
-	vec3 myCameraLook;
-	float distanceCamara2CM = -12;
+	if (!App->GetDebugMode()) //Si esto es true la camara no sigue al jugador y se queda libre, F1 para hacerlo
+	{
+		vec3 myCamera;
+		vec3 myCameraLook;
+		float distanceCamara2CM = -12;
 
-	//Se posiciona la camara detrás del jugador
-	myCamera.x = camPos.getX() + forwardVector.getX() * distanceCamara2CM;
-	myCamera.y = camPos.getY() + forwardVector.getY() + 6;
-	myCamera.z = camPos.getZ() + forwardVector.getZ() * distanceCamara2CM;
+		//Se posiciona la camara detrás del jugador
+		myCamera.x = camPos.getX() + forwardVector.getX() * distanceCamara2CM;
+		myCamera.y = camPos.getY() + forwardVector.getY() + 6;
+		myCamera.z = camPos.getZ() + forwardVector.getZ() * distanceCamara2CM;
 
-	lastCam = myCamera;
-		
-	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)LOG("Position Player \n x: %f \t z: %f ", myCamera.x, myCamera.z);
+		lastCam = myCamera;
 
-	//Se orienta la cámara para que mire al jugador
-	myCameraLook.x = vehicle->body->getCenterOfMassPosition().getX();
-	myCameraLook.y = vehicle->body->getCenterOfMassPosition().getY() + 4;
-	myCameraLook.z = vehicle->body->getCenterOfMassPosition().getZ();
+		if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)LOG("Position Player \n x: %f \t z: %f ", myCamera.x, myCamera.z);
 
-	//Utilizo la variable myCamera para setear la posición de la cámara	
-	App->camera->Position = myCamera;
-	//Utilizo la variable myCameraLook para setear la orientación de la cámara
-	App->camera->LookAt(myCameraLook);
+		//Se orienta la cámara para que mire al jugador
+		myCameraLook.x = vehicle->body->getCenterOfMassPosition().getX();
+		myCameraLook.y = vehicle->body->getCenterOfMassPosition().getY() + 4;
+		myCameraLook.z = vehicle->body->getCenterOfMassPosition().getZ();
+
+		//Utilizo la variable myCamera para setear la posición de la cámara	
+		App->camera->Position = myCamera;
+		//Utilizo la variable myCameraLook para setear la orientación de la cámara
+		App->camera->LookAt(myCameraLook);
+	}
 }
 
 

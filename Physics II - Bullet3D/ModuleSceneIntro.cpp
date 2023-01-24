@@ -34,6 +34,9 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
+	//Activar/desactivar DebugMode
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)App->SetDebugMode();
+
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
