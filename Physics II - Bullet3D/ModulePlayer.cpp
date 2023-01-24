@@ -141,6 +141,13 @@ update_status ModulePlayer::Update(float dt)
 	vehicle->Turn(turn);
 	vehicle->Brake(brake);
 
+	//Variables para camara detrás del player
+	forwardVector = vehicle->vehicle->getForwardVector().normalize();
+	camPos = vehicle->body->getCenterOfMassPosition();
+
+	//Ejecuta la función para poner la camara detrás del player
+	CameraPlayer(dt);
+
 	vehicle->Render();
 
 	char title[80];
@@ -150,5 +157,30 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::CameraPlayer(float dt) 
+{
+	vec3 myCamera;
+	vec3 myCameraLook;
+	float distanceCamara2CM = -12;
+
+	//Se posiciona la camara detrás del jugador
+	myCamera.x = camPos.getX() + forwardVector.getX() * distanceCamara2CM;
+	myCamera.y = camPos.getY() + forwardVector.getY() + 6;
+	myCamera.z = camPos.getZ() + forwardVector.getZ() * distanceCamara2CM;
+
+	lastCam = myCamera;
+		
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)LOG("Position Player \n x: %f \t z: %f ", myCamera.x, myCamera.z);
+
+	//Se orienta la cámara para que mire al jugador
+	myCameraLook.x = vehicle->body->getCenterOfMassPosition().getX();
+	myCameraLook.y = vehicle->body->getCenterOfMassPosition().getY() + 4;
+	myCameraLook.z = vehicle->body->getCenterOfMassPosition().getZ();
+
+	//Utilizo la variable myCamera para setear la posición de la cámara	
+	App->camera->Position = myCamera;
+	//Utilizo la variable myCameraLook para setear la orientación de la cámara
+	App->camera->LookAt(myCameraLook);
+}
 
 

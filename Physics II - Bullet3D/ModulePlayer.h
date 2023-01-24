@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "PhysBody3D.h"
 
 struct PhysVehicle3D;
 
@@ -19,10 +20,17 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	void CameraPlayer(float dt);
+
 public:
 
 	PhysVehicle3D* vehicle;
 	float turn;
 	float acceleration;
 	float brake;
+
+	btVector3 forwardVector;
+	btVector3 camPos;
+	vec3 lastCam;
+
 };
