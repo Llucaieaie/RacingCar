@@ -22,6 +22,9 @@ public:
 
 	void CameraPlayer(float dt);
 
+	void CameraAerial(float dt);
+	bool AerialCam = false;
+
 public:
 
 	PhysVehicle3D* vehicle;

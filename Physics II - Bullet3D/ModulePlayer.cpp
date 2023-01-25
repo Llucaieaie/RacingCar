@@ -147,7 +147,10 @@ update_status ModulePlayer::Update(float dt)
 	camPos = vehicle->body->getCenterOfMassPosition();
 
 	//Ejecuta la función para poner la camara detrás del player
-	CameraPlayer(dt);
+	if (AerialCam == true)
+		CameraAerial(dt);
+	else
+		CameraPlayer(dt);
 
 	vehicle->Render();
 
@@ -184,7 +187,31 @@ void ModulePlayer::CameraPlayer(float dt)
 		App->camera->Position = myCamera;
 		//Utilizo la variable myCameraLook para setear la orientación de la cámara
 		App->camera->LookAt(myCameraLook);
+
+		//Utilizo la variable myCamera para setear la posición de la cámara	
+		App->camera->Position = myCamera;
+		//Utilizo la variable myCameraLook para setear la orientación de la cámara
+		App->camera->LookAt(myCameraLook);
 	}
 }
 
+//Camera aérea, se activa con f2
+void ModulePlayer::CameraAerial(float dt)
+{
+		vec3 myCamera;
+		vec3 myCameraLook;
+		float distanceCamara2CM = -12;
 
+		myCamera.x = vehicle->body->getCenterOfMassPosition().getX();
+		myCamera.y = 100;
+		myCamera.z = vehicle->body->getCenterOfMassPosition().getZ();
+
+		lastCam = myCamera;
+
+		myCameraLook.x = vehicle->body->getCenterOfMassPosition().getX();
+		myCameraLook.y = vehicle->body->getCenterOfMassPosition().getY();
+		myCameraLook.z = vehicle->body->getCenterOfMassPosition().getZ() + 10;
+
+		App->camera->Position = myCamera;
+		App->camera->LookAt(myCameraLook);
+}
