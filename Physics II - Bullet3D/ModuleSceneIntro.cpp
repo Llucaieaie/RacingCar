@@ -20,6 +20,8 @@ bool ModuleSceneIntro::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
+	LoadMap();
+
 	return ret;
 }
 
@@ -39,6 +41,8 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)App->player->AerialCam = !App->player->AerialCam;
 
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)App->player->SideCam = !App->player->SideCam;
+
 	Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();
@@ -52,11 +56,12 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 
 void ModuleSceneIntro::LoadMap()
 {
-	//limits[10].SetPos(0, 0, 256);
-	//limits[10].size.x = 9;
-	//limits[10].size.y = 6;
-	//limits[10].size.z = 512;
-	//limits[10].axis = false;
-	//limits[10].color.Set(255, 0, 0);
-	//App->physics->AddBody(limits[10], 0);
+	//wall[0].SetPos(0, 0, 10);
+	//wall[0].size.x = 1.0f;
+	//wall[0].size.y = 1.0f;
+	//wall[0].size.z = 1.0f;
+	//wall[0].axis = false;
+	//wall[0].color.Set(255, 255, 0);
+	//App->physics->AddBody(wall[0], 0);
+	//Cubes.add(wall[0]);
 }

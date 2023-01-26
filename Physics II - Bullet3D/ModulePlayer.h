@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "PhysBody3D.h"
+#include "PhysVehicle3D.h"
 
 struct PhysVehicle3D;
 
@@ -20,10 +21,16 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	//VehicleInfo car;
+
 	void CameraPlayer(float dt);
 
 	void CameraAerial(float dt);
 	bool AerialCam = false;
+
+	void CameraSide(float dt);
+	bool SideCam = false;
+
 
 public:
 

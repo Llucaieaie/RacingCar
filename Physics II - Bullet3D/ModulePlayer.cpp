@@ -21,7 +21,7 @@ bool ModulePlayer::Start()
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
-	car.chassis_size.Set(2, 2, 4);
+	car.chassis_size.Set(2, 1.1, 4);
 	car.chassis_offset.Set(0, 1.5, 0);
 	car.mass = 500.0f;
 	car.suspensionStiffness = 15.88f;
@@ -32,10 +32,10 @@ bool ModulePlayer::Start()
 	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
-	float connection_height = 1.2f;
-	float wheel_radius = 0.6f;
-	float wheel_width = 0.5f;
-	float suspensionRestLength = 1.2f;
+	float connection_height = 1.0f;
+	float wheel_radius = 0.5f;
+	float wheel_width = 0.4f;
+	float suspensionRestLength = 1.0f;
 
 	// Don't change anything below this line ------------------
 
@@ -52,7 +52,7 @@ bool ModulePlayer::Start()
 	car.wheels[0].connection.Set(half_width - 0.3f * wheel_width, connection_height, half_length - wheel_radius);
 	car.wheels[0].direction = direction;
 	car.wheels[0].axis = axis;
-	car.wheels[0].suspensionRestLength = suspensionRestLength;
+	car.wheels[0].suspensionRestLength = suspensionRestLength/2;
 	car.wheels[0].radius = wheel_radius;
 	car.wheels[0].width = wheel_width;
 	car.wheels[0].front = true;
@@ -64,7 +64,7 @@ bool ModulePlayer::Start()
 	car.wheels[1].connection.Set(-half_width + 0.3f * wheel_width, connection_height, half_length - wheel_radius);
 	car.wheels[1].direction = direction;
 	car.wheels[1].axis = axis;
-	car.wheels[1].suspensionRestLength = suspensionRestLength;
+	car.wheels[1].suspensionRestLength = suspensionRestLength/2;
 	car.wheels[1].radius = wheel_radius;
 	car.wheels[1].width = wheel_width;
 	car.wheels[1].front = true;
@@ -76,7 +76,7 @@ bool ModulePlayer::Start()
 	car.wheels[2].connection.Set(half_width - 0.3f * wheel_width, connection_height, -half_length + wheel_radius);
 	car.wheels[2].direction = direction;
 	car.wheels[2].axis = axis;
-	car.wheels[2].suspensionRestLength = suspensionRestLength;
+	car.wheels[2].suspensionRestLength = suspensionRestLength/2;
 	car.wheels[2].radius = wheel_radius;
 	car.wheels[2].width = wheel_width;
 	car.wheels[2].front = false;
@@ -88,7 +88,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].connection.Set(-half_width + 0.3f * wheel_width, connection_height, -half_length + wheel_radius);
 	car.wheels[3].direction = direction;
 	car.wheels[3].axis = axis;
-	car.wheels[3].suspensionRestLength = suspensionRestLength;
+	car.wheels[3].suspensionRestLength = suspensionRestLength/2;
 	car.wheels[3].radius = wheel_radius;
 	car.wheels[3].width = wheel_width;
 	car.wheels[3].front = false;
@@ -149,6 +149,8 @@ update_status ModulePlayer::Update(float dt)
 	//Ejecuta la función para poner la camara detrás del player
 	if (AerialCam == true)
 		CameraAerial(dt);
+	else if (SideCam == true)
+		CameraSide(dt);
 	else
 		CameraPlayer(dt);
 
@@ -214,4 +216,36 @@ void ModulePlayer::CameraAerial(float dt)
 
 		App->camera->Position = myCamera;
 		App->camera->LookAt(myCameraLook);
+}
+
+//camara de lado, se activa con f3
+void ModulePlayer::CameraSide(float dt)
+{
+	vec3 myCamera;
+	vec3 myCameraLook;
+	float distanceCamara2CM = -12;
+
+	//Se posiciona la camara detrás del jugador
+	myCamera.x = camPos.getX() + forwardVector.getX()+12;
+	myCamera.y = camPos.getY() + forwardVector.getY() + 1;
+	myCamera.z = camPos.getZ() + forwardVector.getZ();
+
+	lastCam = myCamera;
+
+	if (App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN)LOG("Position Player \n x: %f \t z: %f ", myCamera.x, myCamera.z);
+
+	//Se orienta la cámara para que mire al jugador
+	myCameraLook.x = vehicle->body->getCenterOfMassPosition().getX();
+	myCameraLook.y = vehicle->body->getCenterOfMassPosition().getY() + 1;
+	myCameraLook.z = vehicle->body->getCenterOfMassPosition().getZ();
+
+	//Utilizo la variable myCamera para setear la posición de la cámara	
+	App->camera->Position = myCamera;
+	//Utilizo la variable myCameraLook para setear la orientación de la cámara
+	App->camera->LookAt(myCameraLook);
+
+	//Utilizo la variable myCamera para setear la posición de la cámara	
+	App->camera->Position = myCamera;
+	//Utilizo la variable myCameraLook para setear la orientación de la cámara
+	App->camera->LookAt(myCameraLook);
 }

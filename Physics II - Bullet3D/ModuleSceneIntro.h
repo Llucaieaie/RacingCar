@@ -44,5 +44,7 @@ public:
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 
+
+	p2List<Cube> Cubes;
 	Cube wall[];
 };
