@@ -97,8 +97,7 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(0, 0, 0);
-	
+	vehicle->SetPos(-210.0f, 0, -200.0f);
 	return true;
 }
 
@@ -131,6 +130,7 @@ update_status ModulePlayer::Update(float dt)
 	{
 		if(turn > -TURN_DEGREES)
 			turn -= TURN_DEGREES;
+		LOG("turn = %f", turn);
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
