@@ -45,6 +45,7 @@ public:
 	PhysMotor3D* right_wheel;
 
 	Cube road;
+	Cube wall;
 	vec3 posroad;
 	p2List<Cube> map;
 };
