@@ -49,7 +49,13 @@ update_status ModuleSceneIntro::Update(float dt)
 	p.axis = true;
 	p.Scale(2.0f, 2.0f, 2.0f);
 	p.SetPos(-80.0f, 0.0f, -200.0f);
-	p.Render();
+	p.color = { 1.0f,1.0f,0 };
+;	p.Render();
+
+	for (int i = 0; i < 9; i++)
+	{
+		wall[i].Render();
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -63,34 +69,53 @@ void ModuleSceneIntro::LoadMap()
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------- PAREDES ----------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	for (int i = 0; i < 9; i++)
+		wall[i].color.Set(1.0f, 0.0f, 0.0f);
 
 	//------------------------------------------------------------------------------------- EXTERIORES ----------------------------------------------------------------------------------------------
 
-	wall.size = { 0.0f,50.0f,500.0f };
-	wall.SetPos(-300.0f,wall.size.y/2,-100.0f);
-	App->physics->AddBody(wall, 0);
+	wall[0].size = { 0.0f,50.0f,500.0f };
+	wall[0].SetPos(-300.0f, wall[0].size.y / 2, -100.0f);
+	App->physics->AddBody(wall[0], 0);
 
-	wall.size = { 0.0f,50.0f,500.0f };
-	wall.SetPos(180.0f, wall.size.y / 2, -100.0f);
-	App->physics->AddBody(wall, 0);
+	wall[1].size = { 0.0f,50.0f,500.0f };
+	wall[1].SetPos(180.0f, wall[0].size.y / 2, -100.0f);
+	App->physics->AddBody(wall[1], 0);
 
-	wall.size = { 550.0f,50.0f,0.0f };
-	wall.SetPos(-50.0f, wall.size.y / 2, -340.0f);
-	App->physics->AddBody(wall, 0);
+	wall[2].size = { 550.0f,50.0f,0.0f };
+	wall[2].SetPos(-50.0f, wall[0].size.y / 2, -340.0f);
+	App->physics->AddBody(wall[2], 0);
 
-	wall.size = { 550.0f,50.0f,0.0f };
-	wall.SetPos(-50.0f, wall.size.y / 2, 0.0f);
-	App->physics->AddBody(wall, 0);
+	wall[3].size = { 550.0f,50.0f,0.0f };
+	wall[3].SetPos(-50.0f, wall[0].size.y / 2, 0.0f);
+	App->physics->AddBody(wall[3], 0);
 
 	//------------------------------------------------------------------------------------- INTERIORES ----------------------------------------------------------------------------------------------
+	vec3 axis = { 0,1,0 };
+	wall[4].size = { 200.0f,10.0f,10.0f };
+	wall[4].SetPos(25.0f, wall[4].size.y / 2, -240.0f);
+	wall[4].SetRotation(10, axis);
+	App->physics->AddBody(wall[4], 0);
 
-	wall.size = { 200.0f,10.0f,10.0f };
-	wall.SetPos(25.0f, wall.size.y / 2, -240.0f);
-	App->physics->AddBody(wall, 0);
+	wall[5].size = { 150.0f,10.0f,10.0f };
+	wall[5].SetPos(110.0f, wall[5].size.y / 2, -180.0f);
+	wall[5].SetRotation(0, axis);
+	App->physics->AddBody(wall[5], 0);
 
-	wall.size = { 150.0f,10.0f,10.0f };
-	wall.SetPos(110.0f, wall.size.y / 2, -180.0f);
-	App->physics->AddBody(wall, 0);
+	wall[6].size = { 200.0f,10.0f,10.0f };
+	wall[6].SetPos(15.0f, wall[6].size.y / 2, -120.0f);
+	wall[6].SetRotation(-45, axis);
+	App->physics->AddBody(wall[6], 0);
+
+	wall[7].size = { 10.0f,10.0f,80.0f };
+	wall[7].SetPos(-120.0f, wall[7].size.y / 2, -170.0f);
+	wall[7].SetRotation(-25, axis);
+	App->physics->AddBody(wall[7], 0);
+
+	wall[8].size = { 220.0f,10.0f,60.0f };
+	wall[8].SetPos(-140.0f, wall[8].size.y / 2, -240.0f);
+	wall[8].SetRotation(-20, axis);
+	App->physics->AddBody(wall[8], 0);
 
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------- CIRCUITO ----------------------------------------------------------------------------------------------
@@ -102,7 +127,7 @@ void ModuleSceneIntro::LoadMap()
 	posz = -60.0f;
 	float scale = 3.0f;
 	// Cube colors
-	//road.color = (255,0,0);
+	road.color = { 1.0f,1.0f,0 };
 	// 
 	//------------------------------------------------------------------------------------- INICIO ----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 12; i++)
