@@ -50,6 +50,7 @@ bool ModulePhysics3D::Start()
 {
 	LOG("Creating Physics environment");
 
+	
 	world = new btDiscreteDynamicsWorld(dispatcher, broad_phase, solver, collision_conf);
 	world->setDebugDrawer(debug_draw);
 	world->setGravity(GRAVITY);
@@ -65,7 +66,6 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
-
 	return true;
 }
 
