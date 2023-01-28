@@ -45,17 +45,21 @@ update_status ModuleSceneIntro::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)App->player->SideCam = !App->player->SideCam;
 
-	Plane p(0, 1, 0, 0);
+	Cube p;
+	p.size = { 800, 0, 800 };
 	p.axis = true;
-	p.Scale(2.0f, 2.0f, 2.0f);
 	p.SetPos(-80.0f, 0.0f, -200.0f);
-	p.color = { 1.0f,1.0f,0 };
+	p.color = { 2.0f,2.0f,0 };
 ;	p.Render();
 
 	for (int i = 0; i < 9; i++)
 	{
 		wall[i].Render();
 	}
+
+	ramp1.Render();
+	ramp2.Render();
+	ramp3.Render();
 
 	return UPDATE_CONTINUE;
 }
@@ -116,7 +120,7 @@ void ModuleSceneIntro::LoadMap()
 	wall[8].SetPos(-140.0f, wall[8].size.y / 2, -240.0f);
 	wall[8].SetRotation(-20, axis);
 	App->physics->AddBody(wall[8], 0);
-
+	
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------- CIRCUITO ----------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -141,6 +145,7 @@ void ModuleSceneIntro::LoadMap()
 	}
 
 	//-------------------------------------------------------------------------------------- PRIMERA CURVA ---------------------------------------------------------------------------------------------
+	//cuidado que aqui venen els fuyms matematics
 	for (uint i = 0; i < 6; i++)
 	{
 		road.SetPos(posx * scale, posy, posz * scale);
@@ -756,4 +761,24 @@ void ModuleSceneIntro::LoadMap()
 		posx -= 1.0f;
 		posz -= 0.4f;
 	}
+
+	//---------------------------------------------------------------------------------------RAMPAS--------------------------------------------------------------------------------------------
+	
+	ramp1.color.Set(1.0f, 0.0f, 0.0f);
+	ramp1.size = { 20.0f,10.0f,10.0f };
+	ramp1.SetPos(-100.0f, 0.0f, -145.0f);
+	ramp1.SetRotation(30, { 0,-0.5,-1 });
+	App->physics->AddBody(ramp1, 0);
+
+	ramp2.color.Set(1.0f, 0.0f, 0.0f);
+	ramp2.size = { 10.0f,10.0f,20.0f };
+	ramp2.SetPos(155.0f, 0.0f, -205.0f);
+	ramp2.SetRotation(30, { -1,-0.35f,0 });
+	App->physics->AddBody(ramp2, 0);
+
+	ramp3.color.Set(1.0f, 0.0f, 0.0f);
+	ramp3.size = { 20.0f,30.0f,100.0f };
+	ramp3.SetPos(-300.0f, -5.0f, -260.0f);
+	ramp3.SetRotation(45, { 0,0,1 });
+	App->physics->AddBody(ramp3, 0);
 }

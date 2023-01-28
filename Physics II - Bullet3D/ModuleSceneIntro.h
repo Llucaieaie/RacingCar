@@ -48,4 +48,8 @@ public:
 	Cube wall[9];
 	vec3 posroad;
 	p2List<Cube> map;
+	Cube ramp1;
+	Cube ramp2;
+	Cube ramp3;
+
 };
