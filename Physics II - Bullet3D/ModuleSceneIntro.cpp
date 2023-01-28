@@ -58,22 +58,22 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 
 void ModuleSceneIntro::LoadMap()
 {
-	wall.size = { 10.0f, 0.1f, 10.0f };
+	road.size = { 10.0f, 0.1f, 10.0f };
 	float posx, posy, posz;
 	posx = -70.0f;
-	posy = wall.size.y/2;
+	posy = road.size.y/2;
 	posz = -60.0f;
 	float scale = 3.0f;
 	// Cube colors
-	//wall.color = (255,0,0);
+	//road.color = (255,0,0);
 
 	//------------------------------------------------------------------------------------- INICIO ----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 12; i++)
 	{
 
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.5f;
 	}
@@ -81,88 +81,88 @@ void ModuleSceneIntro::LoadMap()
 	//-------------------------------------------------------------------------------------- PRIMERA CURVA ---------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.9f;
 		posz -= 0.6f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz -= 0.7f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.6f;
 		posz -= 0.8f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.3f;
 		posz -= 0.9f;
 	}	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.0f;
 		posz -= 1.0f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.2f;
 		posz -= 0.9f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.4f;
 		posz -= 0.8f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.6f;
 		posz -= 0.6f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.7f;
 		posz -= 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.8f;
 		posz -= 0.2f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.0f;
 	}
@@ -171,50 +171,50 @@ void ModuleSceneIntro::LoadMap()
 
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.1f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.15f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.2f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.3f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.4f;
 	}
 
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 0.5f;
 	}
@@ -222,57 +222,57 @@ void ModuleSceneIntro::LoadMap()
 	//------------------------------------------------------------------------------------ SEGUNDA CURVA -----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 0.2f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 0.0f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz -= 0.2f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz -= 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz -= 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz -= 0.6f;
 	}
@@ -280,113 +280,113 @@ void ModuleSceneIntro::LoadMap()
 	//------------------------------------------------------------------------------------ TERCERA CURVA -----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz -= 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz -= 0.2f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.9f;
 		posz += 0.1f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.6f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.4f;
 		posz += 0.6f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.3f;
 		posz += 0.7f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.0f;
 		posz += 1.0f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.4f;
 		posz += 0.9f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.7f;
 		posz += 0.7f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.9f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 10; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz += 0.2f;
 	}
 	for (uint i = 0; i < 10; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz += 0.0f;
 	}
 	for (uint i = 0; i < 8; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.1f;
 	}
 	for (uint i = 0; i < 8; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.2f;
 	}
@@ -394,65 +394,65 @@ void ModuleSceneIntro::LoadMap()
 	//------------------------------------------------------------------------------------ TERCERA CURVA -----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.9f;
 		posz += 0.1f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.7f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.5f;
 		posz += 0.7f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.1f;
 		posz += 0.9f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.2f;
 		posz += 1.0f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.5f;
 		posz += 1.0f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.8f;
 		posz += 1.0f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 1.0f;
 	}
@@ -461,137 +461,137 @@ void ModuleSceneIntro::LoadMap()
 
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 1.0f;
 		posz += 0.7f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.8f;
 		posz += 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.65f;
 		posz += 0.75f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.5f;
 		posz += 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.25f;
 		posz += 0.75f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx += 0.0f;
 		posz += 1.0f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.25f;
 		posz += 0.75f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.5f;
 		posz += 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.75f;
 		posz += 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz += 0.2f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.1f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz -= 0.3f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.7f;
 		posz -= 0.5f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.6f;
 		posz -= 0.8f;
 	}
 	for (uint i = 0; i < 24; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.4f;
 		posz -= 1.0f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.6f;
 		posz -= 0.8f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz -= 0.5f;
 	}
@@ -600,97 +600,97 @@ void ModuleSceneIntro::LoadMap()
 
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.2f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz += 0.1f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.9f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz += 0.7f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz += 0.4f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz += 0.1f;
 	}
 	for (uint i = 0; i < 4; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.8f;
 		posz -= 0.4f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.5f;
 		posz -= 0.7f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.2f;
 		posz -= 0.9f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.1f;
 		posz -= 0.9f;
 	}
 	for (uint i = 0; i < 6; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 0.4f;
 		posz -= 0.5f;
 	}
 	for (uint i = 0; i < 12; i++)
 	{
-		wall.SetPos(posx * scale, posy, posz * scale);
-		App->physics->AddBody(wall, 0);
-		map.add(wall);
+		road.SetPos(posx * scale, posy, posz * scale);
+		App->physics->AddBody(road, 0);
+		map.add(road);
 		posx -= 1.0f;
 		posz -= 0.4f;
 	}
