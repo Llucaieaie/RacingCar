@@ -61,6 +61,9 @@ public:
 	PhysBody3D* grassSensor;
 	Cube grass;
 
+	PhysBody3D* checkpointSensor;
+	Cube checkpoint;
+
 	uint secondsSinceInit;
 	uint timer = INITIAL_TIME;
 	uint frames = 0;

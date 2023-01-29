@@ -143,7 +143,7 @@ update_status ModulePlayer::Update(float dt)
 		if (vehicle->GetKmh() > 0.5f) {
 			brake = BRAKE_POWER;
 		}
-		else if (vehicle->GetKmh() <= 0.0f) {
+		else if (vehicle->GetKmh() <= 0.1f) {
 			acceleration = -MAX_ACCELERATION/3;
 		}
 	}
@@ -170,6 +170,11 @@ update_status ModulePlayer::Update(float dt)
 		CameraPlayer(dt);
 
 	vehicle->Render();
+
+	if (check)
+	{
+		LOG("AAA--------------A--AAA-AAA--A-A-A--A-A--AAAA------AAA------AAAA");
+	}
 
 	char title[80];
 	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
@@ -269,5 +274,9 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body2->id == 2) boostTimer = 2;
 	if (body2->id == 3) grass = true;
-
+	if (body2->id == 55) 
+	if (body2->id == 55)
+	{
+		check = true;
+	}
 }

@@ -40,6 +40,7 @@ public:
 	uint boostTimer;
 	float brake;
 	bool grass = false;
+	bool check = false;
 	bool road;
 
 	btVector3 forwardVector;

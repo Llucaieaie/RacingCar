@@ -148,6 +148,20 @@ void ModuleSceneIntro::LoadMap()
 	// Cube colors
 	road.color = { 1.0f,1.0f,0.0f };
 	
+	checkpoint.SetRotation(45, axis);
+	checkpoint.SetPos(-113, 0.5, -120);
+	checkpoint.size.x = 5;
+	checkpoint.size.y = 10;
+	checkpoint.size.z = 20;
+	checkpoint.axis = false;
+	checkpoint.wire = false;
+	checkpoint.color.Set(225, 225, 0);
+
+	checkpointSensor = App->physics->AddBody(checkpoint, 0);
+	checkpointSensor->SetAsSensor(true);
+	checkpointSensor->SetId(55);
+	checkpoint.color = { 1.0f,1.0f,0.0f };
+
 	//-------------------------------------------------------------------------------------- GRASS -----------------------------------------------------------------------------------------------
 	//grass.size = { 2000.0f, 0.01f, 2000.0f };
 	grass.SetPos(0, 0.7, -200);
