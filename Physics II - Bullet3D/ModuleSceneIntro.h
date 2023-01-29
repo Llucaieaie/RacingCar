@@ -10,6 +10,15 @@
 struct PhysBody3D;
 struct PhysMotor3D;
 
+// Class: Atmosphere
+class Atmosphere
+{
+public:
+	float density; // Density of air
+	float windx; // Wind x
+	float windy; // Wind y
+};
+
 class ModuleSceneIntro : public Module
 {
 public:
