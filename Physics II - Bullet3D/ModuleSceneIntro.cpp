@@ -179,29 +179,31 @@ void ModuleSceneIntro::LoadMap()
 	//Plataforma que se mueve
 	Cube* cube;
 	
-	cube = new Cube();
-	cube->SetPos(posx * scale, posy, posz * scale);
-	cube->size = { 10,1.5,80 };
-	cube->color.Set(0.5f, 0.5f, 1.0f);
-	cubes.add(cube);
-	physBodyCubes.add(App->physics->AddBody(*cube, 0));
-	physBodyCubes.getLast()->data->body->setFriction(0.00f);
+	timer2 = new Timer;
+
+	//cube = new Cube();
+	//cube->SetPos(posx * scale, 10, posz * scale);
+	//cube->size = { 10,1.5,80 };
+	//cube->color.Set(0.5f, 0.5f, 1.0f);
+	//cubes.add(cube);
+	//physBodyCubes.add(App->physics->AddBody(*cube, 0));
+	//physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 
 
 	cubeMove = new Cube();
-	cubeMove->SetPos(posx * scale, posy, posz* scale);
+	cubeMove->SetPos(posx * scale, 10, posz* scale);
 	cubeMove->size = { 10,2,10 };
 	cubeMove->color.Set(0.5f, 1.0f, 0.5f);
 	cubeMovBody = App->physics->AddBody(*cubeMove, 0);
 
-	cube = new Cube();
-	cube->SetPos(posx* scale, posy, posz* scale);
-	cube->size = { 139.9,2,10 };
-	cube->color.Set(0.5f, 0.5f, 1.0f);
-	cubes.add(cube);
-	physBodyCubes.add(App->physics->AddBody(*cube, 0));
-	physBodyCubes.getLast()->data->body->setFriction(0.00f);
+	//cube = new Cube();
+	//cube->SetPos(posx* scale, 10, posz* scale);
+	//cube->size = { 139.9,2,10 };
+	//cube->color.Set(0.5f, 0.5f, 1.0f);
+	//cubes.add(cube);
+	//physBodyCubes.add(App->physics->AddBody(*cube, 0));
+	//physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	//------------------------------------------------------------------------------------- INICIO ----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 12; i++)
@@ -909,21 +911,19 @@ void ModuleSceneIntro::CubeMoveRender()
 		cubeMove->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
 		cubeMovBody->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
 	}
+	else
+	{
+		// Utilizo un timer para que espere 3 segundos antes de volver a moverse
+		if (!timerStarted)
+		{
+			timerStarted = true;
+			timer2->Start();
+		}
+		if (timer2->Read() > 3000)
+		{
+			timerStarted = false;
+			moveToUp = !moveToUp;
+		}
 
-	moveToUp = !moveToUp;
-	//else
-	//{
-	//	// Utilizo un timer para que espere 3 segundos antes de volver a moverse
-	//	if (!timerStarted)
-	//	{
-	//		timerStarted = true;
-	//		timer2->Start();
-	//	}
-	//	if (timer2->Read() > 3000)
-	//	{
-	//		timerStarted = false;
-	//		moveToUp = !moveToUp;
-	//	}
-
-	
+	}
 }
