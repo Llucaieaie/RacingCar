@@ -11,6 +11,7 @@ struct PhysVehicle3D;
 #define GRASS_ACCELERATION 400.0f
 #define TURN_DEGREES 15.0f * DEGTORAD
 #define BRAKE_POWER 100.0f
+#define INITIAL_TIME 60
 
 class ModulePlayer : public Module
 {
@@ -46,6 +47,13 @@ public:
 	bool check = false;
 	bool road;
 	int respawn = 0;
+	float killerCountDown;
+	bool contadorIniciado;
+	bool victoria;
+
+	uint secondsSinceInit;
+	uint timer = INITIAL_TIME;
+	uint frames = 0;
 
 	btVector3 forwardVector;
 	btVector3 camPos;

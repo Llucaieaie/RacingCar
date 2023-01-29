@@ -13,6 +13,8 @@
 #include "ModulePhysics3D.h"
 #include "ModulePlayer.h"
 
+#define INITIAL_TIME 60
+
 class Application
 {
 public:
@@ -42,6 +44,10 @@ public:
 
 	bool GetDebugMode() { return debug; };
 	void SetDebugMode() { debug = !debug; };
+
+	uint secondsSinceInit;
+	uint timer = INITIAL_TIME;
+	uint frames = 0;
 
 private:
 

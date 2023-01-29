@@ -79,6 +79,9 @@ public:
 	PhysBody3D* checkpointSensor;
 	Cube checkpoint;
 
+	PhysBody3D* metaSensor;
+	Cube meta;
+
 	uint secondsSinceInit;
 	uint timer = INITIAL_TIME;
 	uint frames = 0;

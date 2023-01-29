@@ -101,6 +101,8 @@ bool ModulePlayer::Start()
 	vehicle->SetId(1);
 
 	boostTimer = 0;
+	killerCountDown = 60;
+	contadorIniciado = false;
 
 	return true;
 }
@@ -189,7 +191,7 @@ update_status ModulePlayer::Update(float dt)
 		respawn = 1;
 	}
 
-	if (grass)
+	/*if (grass)
 	{
 		if (respawn == 1)
 		{
@@ -207,10 +209,25 @@ update_status ModulePlayer::Update(float dt)
 		}
 
 
+	}*/
+
+	secondsSinceInit = INITIAL_TIME - timer;
+
+	if (killerCountDown > -1 && contadorIniciado) 
+	{
+		killerCountDown -= dt;
+		if (killerCountDown == 0 && victoria == false)
+		{
+			char title[80];
+			sprintf_s(title, "HAS PERDIDO");
+			App->window->SetTitle(title);
+		}
 	}
 
+	
+
 	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
+	sprintf_s(title, "%.1f Km/h, Timer: %.2f", vehicle->GetKmh(), killerCountDown);
 	App->window->SetTitle(title);
 
 	return UPDATE_CONTINUE;
@@ -308,6 +325,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	if (body2->id == 2) boostTimer = 2;
 	if (body2->id == 3) grass = true;
 	if (body2->id == 4) vehicle->SetPos(-246.0f, 0, -200.0f);
+	if (body2->id == 5) contadorIniciado = true, victoria = false;
 	if (body2->id == 55)
 	{
 		check = true;

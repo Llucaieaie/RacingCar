@@ -193,6 +193,18 @@ void ModuleSceneIntro::LoadMap()
 	deathSensor->SetAsSensor(true);
 	deathSensor->SetId(4);
 
+	//-------------------------------------------------------------------------------------- META ------------------------------------------------------------------------------------------------
+	meta.SetPos(-246.0f, 0, -200.0f);
+	meta.size.x = 1;
+	meta.size.y = 15;
+	meta.size.z = 40;
+	meta.axis = false;
+	meta.wire = false;
+
+	metaSensor = App->physics->AddBody(meta, 0);
+	metaSensor->SetAsSensor(true);
+	metaSensor->SetId(5);
+
 	//Plataforma que se mueve
 	Cube* cube;
 	
