@@ -16,6 +16,8 @@ public:
 	ModuleSceneIntro(Application* app, bool start_enabled = true);
 	~ModuleSceneIntro();
 
+	void CubeMoveRender();
+
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
@@ -23,6 +25,11 @@ public:
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 
 	void LoadMap();
+
+	Cube* cubeMove;
+	PhysBody3D* cubeMovBody;
+	float posMoveY;
+	float offsetOfFloor = 0;
 
 public:
 	/*
@@ -32,6 +39,11 @@ public:
 	PhysBody3D* pb_snake2[MAX_SNAKE];
 	Sphere s_snake2[MAX_SNAKE];
 	*/
+
+	p2List<Cube*> looping;
+	p2List<Cube*> cylinderWall;
+	p2List<Cube*> cubes;
+	p2List<PhysBody3D*> physBodyCubes;
 
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;
@@ -67,4 +79,14 @@ public:
 	uint secondsSinceInit;
 	uint timer = INITIAL_TIME;
 	uint frames = 0;
+
+	bool moveToUp = true;
+	bool timerStarted;
+
+	float cX = 1;
+	float cY = 1;
+	float cZ = 1;
+
+private:
+	Timer* timer2;
 };

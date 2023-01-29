@@ -21,6 +21,7 @@ public:
 
 	virtual void	Render() const;
 	virtual void	InnerRender() const;
+	vec3			GetPos() { return posInit; }
 	void			SetPos(float x, float y, float z);
 	void			SetRotation(float angle, const vec3 &u);
 	void			Scale(float x, float y, float z);
@@ -30,6 +31,7 @@ public:
 	
 	Color color;
 	mat4x4 transform;
+	vec3 posInit;
 	bool axis,wire;
 
 protected:

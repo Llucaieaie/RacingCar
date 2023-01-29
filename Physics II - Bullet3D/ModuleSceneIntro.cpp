@@ -176,6 +176,34 @@ void ModuleSceneIntro::LoadMap()
 	grassSensor->SetAsSensor(true);
 	grassSensor->SetId(3);
 
+
+	//Plataforma que se mueve
+	Cube* cube;
+	
+	cube = new Cube();
+	cube->SetPos(posx * scale, posy, posz * scale);
+	cube->size = { 10,1.5,80 };
+	cube->color.Set(0.5f, 0.5f, 1.0f);
+	cubes.add(cube);
+	physBodyCubes.add(App->physics->AddBody(*cube, 0));
+	physBodyCubes.getLast()->data->body->setFriction(0.00f);
+
+
+
+	cubeMove = new Cube();
+	cubeMove->SetPos(posx * scale, posy, posz* scale);
+	cubeMove->size = { 10,2,10 };
+	cubeMove->color.Set(0.5f, 1.0f, 0.5f);
+	cubeMovBody = App->physics->AddBody(*cubeMove, 0);
+
+	cube = new Cube();
+	cube->SetPos(posx* scale, posy, posz* scale);
+	cube->size = { 139.9,2,10 };
+	cube->color.Set(0.5f, 0.5f, 1.0f);
+	cubes.add(cube);
+	physBodyCubes.add(App->physics->AddBody(*cube, 0));
+	physBodyCubes.getLast()->data->body->setFriction(0.00f);
+
 	//------------------------------------------------------------------------------------- INICIO ----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 12; i++)
 	{
@@ -860,4 +888,43 @@ void ModuleSceneIntro::LoadMap()
 	ramp3.SetPos(-300.0f, -5.0f, -260.0f);
 	ramp3.SetRotation(45, { 0,0,1 });
 	App->physics->AddBody(ramp3, 0);
+}
+
+void ModuleSceneIntro::CubeMoveRender()
+{
+
+	cubeMove->Render();
+	cubeMove->color.Set(cX, cY, cZ);
+
+	posMoveY = cubeMove->GetPos().y;
+	if ((posMoveY <= 90.25 + offsetOfFloor) && moveToUp)
+	{
+		posMoveY += 0.10;
+		cubeMove->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
+		cubeMovBody->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
+
+	}
+	else if ((posMoveY >= 15 + offsetOfFloor) && !moveToUp)
+	{
+		posMoveY -= 0.16;
+		cubeMove->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
+		cubeMovBody->SetPos(cubeMove->GetPos().x, posMoveY, cubeMove->GetPos().z);
+	}
+
+	moveToUp = !moveToUp;
+	//else
+	//{
+	//	// Utilizo un timer para que espere 3 segundos antes de volver a moverse
+	//	if (!timerStarted)
+	//	{
+	//		timerStarted = true;
+	//		timer2->Start();
+	//	}
+	//	if (timer2->Read() > 3000)
+	//	{
+	//		timerStarted = false;
+	//		moveToUp = !moveToUp;
+	//	}
+
+	
 }
