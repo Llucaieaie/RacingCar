@@ -108,8 +108,8 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 				}
 			}
 		}
-		integrator_velocity_verlet(App->player->car, dt);
-		compute_aerodynamic_drag(0.0f, 0.0f, App->player->car, atmosphere);
+		//integrator_velocity_verlet(App->player->car, dt);
+		//compute_aerodynamic_drag(0.0f, 0.0f, App->player->car, atmosphere);
 	}
 
 
