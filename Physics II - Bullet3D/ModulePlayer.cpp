@@ -124,11 +124,13 @@ update_status ModulePlayer::Update(float dt)
 		{
 			acceleration = GRASS_ACCELERATION;
 			car.suspensionStiffness = 10.0f;
+			car.frictionSlip = 8.3f;
 		}
 		else
 		{
 			acceleration = MAX_ACCELERATION;
 			car.suspensionStiffness = 5.8f;
+			car.frictionSlip = 10.8f;
 		}
 	}
 
