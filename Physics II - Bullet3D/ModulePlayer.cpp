@@ -121,7 +121,7 @@ update_status ModulePlayer::Update(float dt)
 
 	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		if (grass) acceleration = GRASS_ACCELERATION;
+		if (grass) acceleration = MAX_ACCELERATION;
 		else acceleration = MAX_ACCELERATION;
 	}
 
@@ -269,7 +269,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body2->id == 2) boostTimer = 2;
 
-	if (body2->id == 1) grass = false;
+	if (body2->body == App->scene_intro->roadSensor) grass = false;
 
 
 }
