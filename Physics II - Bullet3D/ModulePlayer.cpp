@@ -97,7 +97,12 @@ bool ModulePlayer::Start()
 	car.wheels[3].steering = false;
 
 	vehicle = App->physics->AddVehicle(car);
-	vehicle->SetPos(-210.0f, 0, -200.0f);
+	vehicle->SetPos(-246.0f, 0, -200.0f);
+	vehicle->collision_listeners.add(this);
+	vehicle->SetId(1);
+
+	boostTimer = 0;
+
 	return true;
 }
 
@@ -112,12 +117,12 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
-	
 	turn = acceleration = brake = 0.0f;
 
 	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		acceleration = MAX_ACCELERATION;
+		if (grass) acceleration = GRASS_ACCELERATION;
+		else acceleration = MAX_ACCELERATION;
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
@@ -141,6 +146,11 @@ update_status ModulePlayer::Update(float dt)
 		else if (vehicle->GetKmh() <= 0.0f) {
 			acceleration = -MAX_ACCELERATION/3;
 		}
+	}
+
+	if (boostTimer > 0)
+	{
+		acceleration = MAX_ACCELERATION * 20;
 	}
 
 	vehicle->ApplyEngineForce(acceleration);
@@ -253,4 +263,13 @@ void ModulePlayer::CameraSide(float dt)
 	App->camera->Position = myCamera;
 	//Utilizo la variable myCameraLook para setear la orientación de la cámara
 	App->camera->LookAt(myCameraLook);
+}
+
+void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
+{
+	if (body2->id == 2) boostTimer = 2;
+
+	if (body2->id == 1) grass = false;
+
+
 }

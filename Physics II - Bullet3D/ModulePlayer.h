@@ -8,6 +8,7 @@
 struct PhysVehicle3D;
 
 #define MAX_ACCELERATION 1000.0f
+#define GRASS_ACCELERATION 500.0f
 #define TURN_DEGREES 15.0f * DEGTORAD
 #define BRAKE_POWER 100.0f
 
@@ -29,13 +30,17 @@ public:
 	void CameraSide(float dt);
 	bool SideCam = false;
 
+	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 
 public:
 
 	PhysVehicle3D* vehicle;
 	float turn;
 	float acceleration;
+	uint boostTimer;
 	float brake;
+	bool grass = false;
+	bool road;
 
 	btVector3 forwardVector;
 	btVector3 camPos;

@@ -57,6 +57,17 @@ update_status ModuleSceneIntro::Update(float dt)
 		wall[i].Render();
 	}
 
+	secondsSinceInit = INITIAL_TIME - timer;
+
+	if (frames % 60 == 0)
+	{
+		if (App->player->boostTimer > 0)
+		{
+			App->player->boostTimer--;
+		}
+		timer--;
+	}
+
 	ramp1.Render();
 	ramp2.Render();
 	ramp3.Render();
@@ -124,19 +135,31 @@ void ModuleSceneIntro::LoadMap()
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------- CIRCUITO ----------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	road.size = { 10.0f, 0.05f, 10.0f };
+	road.size = { 10.0f, 0.2f, 10.0f };
 	float posx, posy, posz;
 	posx = -70.0f;
 	posy = road.size.y/2;
 	posz = -60.0f;
 	float scale = 3.0f;
+	roadSensor = App->physics->AddBody(road, 0);
+	roadSensor->SetAsSensor(true);
+	roadSensor->SetId(1);
+
 	// Cube colors
-	road.color = { 1.0f,1.0f,0 };
-	// 
+	road.color = { 1.0f,1.0f,0.0f };
+	
+	//-------------------------------------------------------------------------------------- GRASS -----------------------------------------------------------------------------------------------
+	grass.size = { 2000.0f, 0.03f, 2000.0f };
+	grass.SetPos(0, 0, 0);
+	grass.color = Blue;
+	grassSensor = App->physics->AddBody(grass, 0);
+	grassSensor->SetAsSensor(true);
+	grassSensor->SetId(3);
+
+
 	//------------------------------------------------------------------------------------- INICIO ----------------------------------------------------------------------------------------------
 	for (uint i = 0; i < 12; i++)
 	{
-
 		road.SetPos(posx * scale, posy, posz * scale);
 		App->physics->AddBody(road, 0);
 		map.add(road);
@@ -233,6 +256,18 @@ void ModuleSceneIntro::LoadMap()
 		posx += 0.9f;
 		posz += 0.0f;
 	}
+	
+	//BOOST
+	boost[0].SetPos(posx * scale, posy, posz * scale);
+	boost[0].size.x = 1;
+	boost[0].size.y = 15;
+	boost[0].size.z = 40;
+	boost[0].axis = false;
+	boost[0].wire = false;
+	boost[0].color.Set(225, 225, 0);
+	boostSensor = App->physics->AddBody(boost[0], 0);
+	boostSensor->SetAsSensor(true);
+	boostSensor->SetId(2);
 
 	//----------------------------------------------------------------------------------- PRIMERA RECTA ------------------------------------------------------------------------------------------------
 
@@ -243,6 +278,7 @@ void ModuleSceneIntro::LoadMap()
 		map.add(road);
 		posx += 0.9f;
 		posz += 0.1f;
+
 	}
 	for (uint i = 0; i < 12; i++)
 	{
@@ -524,6 +560,18 @@ void ModuleSceneIntro::LoadMap()
 		posz += 1.0f;
 	}
 
+	//BOOST
+	boost[0].SetPos(posx* scale, posy, posz* scale);
+	boost[0].size.x = 1;
+	boost[0].size.y = 15;
+	boost[0].size.z = 40;
+	boost[0].axis = false;
+	boost[0].wire = false;
+	boost[0].color.Set(225, 225, 0);
+	boostSensor = App->physics->AddBody(boost[0], 0);
+	boostSensor->SetAsSensor(true);
+	boostSensor->SetId(2);
+
 	//------------------------------------------------------------------------------------ TERCERA CURVA -----------------------------------------------------------------------------------------------
 
 	for (uint i = 0; i < 12; i++)
@@ -662,6 +710,18 @@ void ModuleSceneIntro::LoadMap()
 		posx -= 0.8f;
 		posz -= 0.5f;
 	}
+
+	//BOOST
+	boost[0].SetPos(posx* scale, posy, posz* scale);
+	boost[0].size.x = 1;
+	boost[0].size.y = 15;
+	boost[0].size.z = 40;
+	boost[0].axis = false;
+	boost[0].wire = false;
+	boost[0].color.Set(225, 225, 0);
+	boostSensor = App->physics->AddBody(boost[0], 0);
+	boostSensor->SetAsSensor(true);
+	boostSensor->SetId(2);
 
 	//------------------------------------------------------------------------------------ ÚLTIMA CURVA -----------------------------------------------------------------------------------------------
 

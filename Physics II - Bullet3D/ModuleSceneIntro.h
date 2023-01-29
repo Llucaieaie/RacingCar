@@ -5,6 +5,7 @@
 #include "Primitive.h"
 
 #define MAX_SNAKE 2
+#define INITIAL_TIME 60
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -44,6 +45,7 @@ public:
 	PhysMotor3D* left_wheel;
 	PhysMotor3D* right_wheel;
 
+	PhysBody3D* roadSensor;
 	Cube road;
 	Cube wall[9];
 	vec3 posroad;
@@ -52,4 +54,14 @@ public:
 	Cube ramp2;
 	Cube ramp3;
 
+	PhysBody3D* boostSensor;
+	Cube boost[20];
+	int passedBoost;
+
+	PhysBody3D* grassSensor;
+	Cube grass;
+
+	uint secondsSinceInit;
+	uint timer = INITIAL_TIME;
+	uint frames = 0;
 };

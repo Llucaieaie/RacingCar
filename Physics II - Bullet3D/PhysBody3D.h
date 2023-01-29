@@ -22,6 +22,7 @@ public:
 	void SetTransform(const float* matrix) const;
 	void SetPos(float x, float y, float z);
 	void SetAsSensor(bool is_sensor);
+	void SetId(int id);
 
 public:
 	btRigidBody* body = nullptr;
@@ -30,8 +31,9 @@ public:
 	p2List<Module*> collision_listeners;
 
 
-private:
+public:
 	bool isSensor;
+	int id;
 };
 
 #endif // __PhysBody3D_H__
