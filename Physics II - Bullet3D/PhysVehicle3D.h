@@ -54,4 +54,6 @@ public:
 
 	VehicleInfo info;
 	btRaycastVehicle* vehicle;
+	float angle = 45.0f;
+	bool rotated = false;
 };

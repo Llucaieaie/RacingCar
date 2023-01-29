@@ -21,6 +21,7 @@ PhysVehicle3D::~PhysVehicle3D()
 }
 
 // ----------------------------------------------------------------------------
+
 void PhysVehicle3D::Render()
 {
 	Cylinder wheel;
@@ -37,7 +38,20 @@ void PhysVehicle3D::Render()
 
 		wheel.Render();
 	}
+	//------
 
+	if (!rotated)
+	{
+		btTransform trans = vehicle->getChassisWorldTransform();
+		btQuaternion rot(btVector3(0, 1, 0), btRadians(angle));
+		trans.setRotation(trans.getRotation() * rot);
+		vehicle->getRigidBody()->setWorldTransform(trans);
+		vehicle->getRigidBody()->setLinearVelocity(btVector3(0, 0, 0));
+		vehicle->getRigidBody()->setAngularVelocity(btVector3(0, 0, 0));
+		rotated = true;
+	}
+
+	//------
 	Cube chassis(info.chassis_size.x, info.chassis_size.y, info.chassis_size.z);
 	vehicle->getChassisWorldTransform().getOpenGLMatrix(&chassis.transform);
 	btQuaternion q = vehicle->getChassisWorldTransform().getRotation();

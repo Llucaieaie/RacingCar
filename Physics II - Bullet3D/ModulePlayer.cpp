@@ -174,6 +174,30 @@ update_status ModulePlayer::Update(float dt)
 	if (check)
 	{
 		LOG("AAA--------------A--AAA-AAA--A-A-A--A-A--AAAA------AAA------AAAA");
+		//App->scene_intro->checkpointSensor->body->~btRigidBody();
+		App->scene_intro->checkpoint.color = { 1.0f,1.0f,1.0f,0.5f };
+		brake = 1000000000000000.0f;
+		respawn = 1;
+	}
+
+	if (grass)
+	{
+		if (respawn == 1)
+		{
+			vehicle->SetPos(-125, 1.8, -110);
+			vehicle->angle = 90;
+			vehicle->rotated = false;
+			grass = false;
+		}
+		if (respawn == 0)
+		{
+			vehicle->SetPos(-246.0f, 0, -200.0f);
+			vehicle->angle = 0;
+			vehicle->rotated = false;
+			grass = false;
+		}
+
+
 	}
 
 	char title[80];

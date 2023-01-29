@@ -42,6 +42,7 @@ public:
 	bool grass = false;
 	bool check = false;
 	bool road;
+	int respawn = 0;
 
 	btVector3 forwardVector;
 	btVector3 camPos;
