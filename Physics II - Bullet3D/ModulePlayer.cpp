@@ -283,7 +283,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body2->id == 2) boostTimer = 2;
 	if (body2->id == 3) grass = true;
-	if (body2->id == 55) 
+	if (body2->id == 4) vehicle->SetPos(-246.0f, 0, -200.0f);
 	if (body2->id == 55)
 	{
 		check = true;

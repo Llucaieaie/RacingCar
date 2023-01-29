@@ -73,6 +73,9 @@ public:
 	PhysBody3D* grassSensor;
 	Cube grass;
 
+	PhysBody3D* deathSensor;
+	Cube deathZone;
+
 	PhysBody3D* checkpointSensor;
 	Cube checkpoint;
 
