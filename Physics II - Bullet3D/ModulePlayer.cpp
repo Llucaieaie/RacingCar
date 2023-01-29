@@ -268,8 +268,6 @@ void ModulePlayer::CameraSide(float dt)
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body2->id == 2) boostTimer = 2;
-
-	
-
+	if (body2->id == 3) grass = true;
 
 }

@@ -47,7 +47,7 @@ public:
 
 	PhysBody3D* roadSensor;
 	Cube road;
-	Cube wall[9];
+	Cube wall[10];
 	vec3 posroad;
 	p2List<Cube> map;
 	Cube ramp1;
