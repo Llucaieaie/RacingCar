@@ -23,18 +23,12 @@ bool ModulePlayer::Start()
 	car.chassis_size.Set(2, 1.1, 4);
 	car.chassis_offset.Set(0, 1.1, 0);
 	car.mass = 400.0f;
-	car.surface = car.chassis_size.x * car.chassis_size.y * car.chassis_size.z;
 	car.suspensionStiffness = 5.8f;
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 1.0f;
 	car.maxSuspensionTravelCm = 1000.0f;
 	car.frictionSlip = 10.8f;
 	car.maxSuspensionForce = 6000.0f;
-
-	//Aerodynamic lift
-	car.cl = 1.2f;
-	//Aerodynamic drag
-	car.cd = 0.4f;
 
 	// Wheel properties ---------------------------------------
 	float connection_height = 1.0f;
@@ -197,25 +191,9 @@ update_status ModulePlayer::Update(float dt)
 		respawn = 1;
 	}
 
-	/*if (grass)
-	{
-		if (respawn == 1)
-		{
-			vehicle->SetPos(-125, 1.8, -110);
-			vehicle->angle = 90;
-			vehicle->rotated = false;
-			grass = false;
-		}
-		if (respawn == 0)
-		{
-			vehicle->SetPos(-246.0f, 0, -200.0f);
-			vehicle->angle = 0;
-			vehicle->rotated = false;
-			grass = false;
-		}
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) vehicle->SetPos(-246.0f, 0, -200.0f);
 
-
-	}*/
+	
 
 	secondsSinceInit = INITIAL_TIME - timer;
 
