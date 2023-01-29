@@ -39,7 +39,7 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 	//Activar/desactivar DebugMode
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)App->SetDebugMode();
+	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)App->SetDebugMode();
 
 	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)App->player->AerialCam = !App->player->AerialCam;
 
