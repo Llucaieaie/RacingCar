@@ -135,6 +135,13 @@ update_status ModulePlayer::Update(float dt)
 			car.frictionSlip = 10.8f;
 		}
 	}
+	//FUYM frenar inercia
+	else
+	{
+		if(vehicle->GetKmh() > 0.0f)
+			acceleration = -MAX_ACCELERATION / 3;
+	}
+		
 
 	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
