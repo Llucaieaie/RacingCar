@@ -66,6 +66,10 @@ bool ModulePhysics3D::Start()
 		btRigidBody* body = new btRigidBody(rbInfo);
 		world->addRigidBody(body);
 	}
+
+	atmosphere.windx = 10.0f;
+	atmosphere.windy = 10.0f;
+
 	return true;
 }
 
@@ -104,7 +108,10 @@ update_status ModulePhysics3D::PreUpdate(float dt)
 				}
 			}
 		}
+		integrator_velocity_verlet(App->player->car, dt);
+		compute_aerodynamic_drag(0.0f, 0.0f, App->player->car, atmosphere);
 	}
+
 
 	return UPDATE_CONTINUE;
 }
@@ -395,4 +402,29 @@ void DebugDrawer::setDebugMode(int debugMode)
 int	 DebugDrawer::getDebugMode() const
 {
 	return mode;
+}
+
+// Integration scheme: Velocity Verlet
+void integrator_velocity_verlet(VehicleInfo car, float dt)
+{
+	car.x += car.vx * dt + 0.5f * car.ax * dt * dt;
+	car.y += car.vy * dt + 0.5f * car.ay * dt * dt;
+	car.vx += car.ax * dt;
+	car.vy += car.ay * dt;
+}
+
+// Compute modulus of a vector
+float modulus(float vx, float vy)
+{
+	return sqrt(vx * vx + vy * vy);
+}
+// Compute Aerodynamic Drag force
+void compute_aerodynamic_drag(float fx, float fy, VehicleInfo car, const Atmosphere& atmosphere)
+{
+	float rel_vel[2] = { car.vx - atmosphere.windx, car.vy - atmosphere.windy }; // Relative velocity
+	float speed = modulus(rel_vel[0], rel_vel[1]); // Modulus of the relative velocity
+	float rel_vel_unitary[2] = { rel_vel[0] / speed, rel_vel[1] / speed }; // Unitary vector of relative velocity
+	float fdrag_modulus = 0.5f * atmosphere.density * speed * speed * car.surface * car.cd; // Drag force (modulus)
+	fx = -rel_vel_unitary[0] * fdrag_modulus; // Drag is antiparallel to relative velocity
+	fy = -rel_vel_unitary[1] * fdrag_modulus; // Drag is antiparallel to relative velocity
 }
