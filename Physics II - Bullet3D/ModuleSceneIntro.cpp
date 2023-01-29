@@ -164,9 +164,9 @@ void ModuleSceneIntro::LoadMap()
 
 	//-------------------------------------------------------------------------------------- GRASS -----------------------------------------------------------------------------------------------
 	//grass.size = { 2000.0f, 0.01f, 2000.0f };
-	grass.SetPos(0, 0.7, -180);
+	grass.SetPos(0, 0.7f, -180);
 	grass.size.x = 600;
-	grass.size.y = 0.01;
+	grass.size.y = 0.0f;
 	grass.size.z = 350;
 	grass.axis = false;
 	grass.wire = false;

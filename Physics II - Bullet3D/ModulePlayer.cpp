@@ -18,7 +18,6 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	VehicleInfo car;
 
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1.1, 4);
@@ -119,10 +118,18 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
-	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		if (grass) acceleration = MAX_ACCELERATION;
-		else acceleration = MAX_ACCELERATION;
+		if (grass)
+		{
+			acceleration = GRASS_ACCELERATION;
+			car.suspensionStiffness = 10.0f;
+		}
+		else
+		{
+			acceleration = MAX_ACCELERATION;
+			car.suspensionStiffness = 5.8f;
+		}
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
