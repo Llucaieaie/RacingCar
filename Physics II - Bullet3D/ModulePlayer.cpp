@@ -18,7 +18,6 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	VehicleInfo car;
 
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1.1, 4);
@@ -119,10 +118,20 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
-	if(App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
 	{
-		if (grass) acceleration = MAX_ACCELERATION;
-		else acceleration = MAX_ACCELERATION;
+		if (grass)
+		{
+			acceleration = GRASS_ACCELERATION;
+			car.suspensionStiffness = 10.0f;
+			car.frictionSlip = 8.3f;
+		}
+		else
+		{
+			acceleration = MAX_ACCELERATION;
+			car.suspensionStiffness = 5.8f;
+			car.frictionSlip = 10.8f;
+		}
 	}
 
 	if(App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
@@ -274,7 +283,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	if (body2->id == 2) boostTimer = 2;
 	if (body2->id == 3) grass = true;
-	if (body2->id == 55) 
+	if (body2->id == 4) vehicle->SetPos(-246.0f, 0, -200.0f);
 	if (body2->id == 55)
 	{
 		check = true;

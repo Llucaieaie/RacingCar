@@ -163,10 +163,9 @@ void ModuleSceneIntro::LoadMap()
 	checkpoint.color = { 1.0f,1.0f,0.0f };
 
 	//-------------------------------------------------------------------------------------- GRASS -----------------------------------------------------------------------------------------------
-	//grass.size = { 2000.0f, 0.01f, 2000.0f };
-	grass.SetPos(0, 0.7, -180);
+	grass.SetPos(0, 0.7f, -180);
 	grass.size.x = 600;
-	grass.size.y = 0.01;
+	grass.size.y = 0.0f;
 	grass.size.z = 350;
 	grass.axis = false;
 	grass.wire = false;
@@ -175,6 +174,17 @@ void ModuleSceneIntro::LoadMap()
 	grassSensor->SetAsSensor(true);
 	grassSensor->SetId(3);
 
+	//------------------------------------------------------------------------------------ DEATHZONE ---------------------------------------------------------------------------------------------
+	deathZone.SetPos(0, -1.0f, -180);
+	deathZone.size.x = 900;
+	deathZone.size.y = 0.5f;
+	deathZone.size.z = 900;
+	deathZone.axis = false;
+	deathZone.wire = false;
+
+	deathSensor = App->physics->AddBody(deathZone, 0);
+	deathSensor->SetAsSensor(true);
+	deathSensor->SetId(4);
 
 	//Plataforma que se mueve
 	Cube* cube;

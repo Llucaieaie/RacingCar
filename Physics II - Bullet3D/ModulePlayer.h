@@ -35,6 +35,9 @@ public:
 public:
 
 	PhysVehicle3D* vehicle;
+
+	VehicleInfo car;
+
 	float turn;
 	float acceleration;
 	uint boostTimer;
